@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+          
+    <h1>{{blog.subject}}</h1>
+        작성자 : {{blog.author}}
+        <br>
+        작성일 : {{blog.date}}
+        <hr>
+        {% if blog.image %}
+        <p><img src="{{blog.image.url}}"></p>
+        {% endif %}
+        {{blog.content}}
+        <br>
+        <br>
+
+        <button type="button" class="btn btn-outline-danger" onclick="location.href='{%url 'edit' blog.id%}'">수정하기</button>
+        <button type="button" class="btn btn-outline-danger" onclick="location.href='{%url 'delete' blog.id%}'">삭제하기</button>
+    
+{% endblock %}

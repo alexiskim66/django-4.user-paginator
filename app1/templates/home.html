@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if user.is_authenticated %} 
+    {{user.country}}에서 온 {{user.ages}}세의 {{user.nickname}}님 안녕하세요~
+    {% endif %}
+
+    <h1>NETFLIX</h1>
+    <button type="button" class="btn btn-outline-danger" onclick="location.href='app1/new/'">새 영화 추가</button>
+    
+    <br>
+    <hr>
+
+    {% for blog in posts %}
+        {{blog.subject}}
+        <br>
+        {% if blog.image %}
+        <a href ="{%url 'detail' blog.id %}">
+        <p><img src="{{blog.image.url}}" width="200" height="150"></p>
+        </a>
+        {% endif %}
+        <br>
+        {{blog.summary}}
+        <hr>
+        <br>
+    {% endfor %}
+
+    <div id="page" class="container">
+    {# first previous #}
+    {% if posts.has_previous %}
+    <a href ="?page=1">First</a>
+    <a href="?page={{posts.previous_page_number}}">Previous</a>
+    {% endif %}
+
+    {# 3of4 #}
+    <span>{{posts.number}}</span>
+    <span>of</span>
+    <span>{{posts.paginator.num_pages}}</span>
+
+    {# Next Last #}
+    {% if posts.has_next %}
+    <a href="?page={{posts.next_page_number}}">Next</a>
+    <a href="?page={{posts.paginator.num_pages}}">Last</a>
+    {% endif %}
+    </div>
+
+    {% for blog in picture.all %}
+    <img src="{{blog.image.url}}" width="70" height="70">
+    <span>{{blog.text}}</span>
+    <br>
+    <img src="{{blog.image_thumbnail.url}}">
+    {% endfor %}
+
+{% endblock %}
