@@ -22,20 +22,17 @@
     <br>
     <hr>
 
+    <table>
     {% for blog in posts %}
-        <p id="subject">{{blog.subject}}</p>
         {% if blog.image %}
-        <a href ="{%url 'detail' blog.id %}">
-        <p><img src="{{blog.image.url}}" width="200" height="150"></p>
-        </a>
+        <th><a href ="{%url 'detail' blog.id %}">
+        <img src="{{blog.image_thumbnail.url}}" width="300" height="200"></a>
         {% endif %}
-        <br>
-        {{blog.summary}}...<br>
-        <a href ="{%url 'detail' blog.id %}">자세히 보기</a>
-        <hr>
-        <br>
+        <br>{{blog.subject}}
+        <br><a href ="{%url 'detail' blog.id %}">줄거리 읽기</a></th>   
     {% endfor %}
-
+</table>
+<br><br>
 
     <div id="page">
     
@@ -61,11 +58,11 @@
     
     <br><br>
 
-    {% for blog in picture.all %}
+    <!-- {% for blog in picture.all %}
     <img src="{{blog.image.url}}" width="70" height="70">
     <span>{{blog.text}}</span>
     <br>
     <img src="{{blog.image_thumbnail.url}}">
-    {% endfor %}
+    {% endfor %} -->
 
 {% endblock %}

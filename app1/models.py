@@ -8,6 +8,7 @@ class Blog(models.Model):
     date = models.DateTimeField()
     content = models.TextField()
     image = models.ImageField(upload_to="app1/", blank=True, null=True)
+    image_thumbnail = ImageSpecField(source = 'image', options = {'quality':100})
 
     def __str__(self):
         return self.subject

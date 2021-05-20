@@ -7,9 +7,9 @@ from .models import Pictures ##
 
 def home(request):
     blogs = Blog.objects.all()
-    picture = Pictures.objects ##
+    picture = Blog.objects ##
     blog_list = Blog.objects.all()
-    paginator = Paginator(blog_list, 2)
+    paginator = Paginator(blog_list, 3)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     return render(request, 'home.html', {'blogs':blogs, 'posts':posts, 'picture':picture})
