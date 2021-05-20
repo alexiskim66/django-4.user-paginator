@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-     
+{% load static%}
+{% load crispy_forms_tags %}
+
 <h1>write your blog</h1>
 
 <form action="{% url 'new' %}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
-    {{blog_form.as_p}}
-    <button type="submit">submit</button>
+    {{blog_form | crispy }}
+    <button type="submit" class="btn btn-outline-danger">작성</button>
 </form>
 
 {% endblock %}

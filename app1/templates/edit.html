@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-     
+{% load static%}
+{% load crispy_forms_tags %}
+
 <h1>Update your blog</h1>
 
 <form id="update_form" method="post" enctype="multipart/form-data">
     {%csrf_token%}
-    {{edit_blog.as_p}}
+    {{edit_blog | crispy }}
     <button type="submit">submit</button>
 </form>
 

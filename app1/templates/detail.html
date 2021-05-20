@@ -8,13 +8,13 @@
         작성일 : {{blog.date}}
         <hr>
         {% if blog.image %}
-        <p><img src="{{blog.image.url}}"></p>
+        <p><img src="{{blog.image.url}}" width=80% height=80%></p>
         {% endif %}
         {{blog.content}}
-        <br>
-        <br>
+        <br><br>
 
         <button type="button" class="btn btn-outline-danger" onclick="location.href='{%url 'edit' blog.id%}'">수정하기</button>
+        <br><br>
         <button type="button" class="btn btn-outline-danger" onclick="location.href='{%url 'delete' blog.id%}'">삭제하기</button>
     
 {% endblock %}

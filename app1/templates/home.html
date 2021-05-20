@@ -1,48 +1,65 @@
 {% extends 'base.html' %}
-{% block content %}
-
-    {% if user.is_authenticated %} 
-    {{user.country}}에서 온 {{user.ages}}세의 {{user.nickname}}님 안녕하세요~
+{% block content %}    
+    <!-- {% if user.is_authenticated %} 
+    <div id="profile">
+    <h6>이용자 정보</h6>
+    현재 접속 지역 : {{user.country}}<br>
+    이용자 연령 : {{user.ages}}<br>
+    {{user.nickname}}님 안녕하세요!
+    </div>
+    {% endif %} -->
+    
+    <div id="status">
+    {% if user.is_authenticated %}
+    {{user.nickname}}님이 접속중
     {% endif %}
+    </div>
 
     <h1>NETFLIX</h1>
+    <br>
     <button type="button" class="btn btn-outline-danger" onclick="location.href='app1/new/'">새 영화 추가</button>
     
     <br>
     <hr>
 
     {% for blog in posts %}
-        {{blog.subject}}
-        <br>
+        <p id="subject">{{blog.subject}}</p>
         {% if blog.image %}
         <a href ="{%url 'detail' blog.id %}">
         <p><img src="{{blog.image.url}}" width="200" height="150"></p>
         </a>
         {% endif %}
         <br>
-        {{blog.summary}}
+        {{blog.summary}}...<br>
+        <a href ="{%url 'detail' blog.id %}">자세히 보기</a>
         <hr>
         <br>
     {% endfor %}
 
-    <div id="page" class="container">
+
+    <div id="page">
+    
     {# first previous #}
     {% if posts.has_previous %}
-    <a href ="?page=1">First</a>
-    <a href="?page={{posts.previous_page_number}}">Previous</a>
+    <!-- <a href ="?page=1">처음 페이지로</a><br> -->
+    <a href="?page={{posts.previous_page_number}}">이전 페이지로</a>
     {% endif %}
-
+    <br>
     {# 3of4 #}
-    <span>{{posts.number}}</span>
-    <span>of</span>
-    <span>{{posts.paginator.num_pages}}</span>
+    <span>현재 {{posts.number}}페이지</span>
+    <span>중</span>
+    <span>{{posts.paginator.num_pages}}페이지</span>
+
+    <br>
 
     {# Next Last #}
     {% if posts.has_next %}
-    <a href="?page={{posts.next_page_number}}">Next</a>
-    <a href="?page={{posts.paginator.num_pages}}">Last</a>
-    {% endif %}
+    <a href="?page={{posts.next_page_number}}">다음 페이지로</a><br>
+    <!-- <a href="?page={{posts.paginator.num_pages}}">마지막 페이지로</a><br> -->
+    {% endif %}  
     </div>
+    
+    <br><br>
 
     {% for blog in picture.all %}
     <img src="{{blog.image.url}}" width="70" height="70">

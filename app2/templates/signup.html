@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-     
+{% load static%}
+{% load crispy_forms_tags %}
+
 <h1>Sign up!</h1>
 
 <form action="{% url 'signup' %}" method="post">
     {%csrf_token%}
-    {{form.as_p}}
-    <button type="submit">submit</button>
+    {{ form | crispy }}
+    <br>
+    <button type="submit" class="btn btn-outline-danger">가입하기</button>
 </form>
 
 {% endblock %}

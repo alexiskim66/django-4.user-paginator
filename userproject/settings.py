@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'app1',
     'app2',
     'imagekit',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'userproject.wsgi.application'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 # Database

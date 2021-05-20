@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    
+    {% if user.is_authenticated %} 
+    <div>
+    <p id="profile">나의 회원 정보</p><br>
+    현재 접속 지역 : {{user.country}}<br>
+    이용자 연령 : {{user.ages}}<br>
+    {{user.nickname}}님 안녕하세요!
+    </div>
+    {% endif %}
+
+
+{% endblock %}

@@ -35,4 +35,7 @@ def register_view(request):
         form = RegisterForm()
         return render(request,'signup.html', {'form':form})
 
+def mypage(request):
+    return render(request, 'mypage.html')
+
 

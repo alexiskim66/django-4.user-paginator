@@ -13,7 +13,7 @@ class Blog(models.Model):
         return self.subject
 
     def summary(self):
-        return self.content[:100]
+        return self.content[:50]
 
 class Pictures(models.Model):
     text = models.TextField()
